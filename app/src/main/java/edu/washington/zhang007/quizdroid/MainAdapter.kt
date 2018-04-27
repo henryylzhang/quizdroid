@@ -1,5 +1,6 @@
 package edu.washington.zhang007.quizdroid
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -26,4 +27,11 @@ class MainAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 }
 
-class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    init {
+        view.setOnClickListener {
+            val intent = Intent(view.context, TopicOverviewActivity::class.java)
+            view.context.startActivity(intent)
+        }
+    }
+}
