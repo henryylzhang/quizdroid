@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.472" />
 
     <Button
-        android:id="@+id/button_advanceQuestion"
+        android:id="@+id/button_submitAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="113dp"

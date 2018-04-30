@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TopicOverviewActivity"
+        <activity android:name=".OverviewActivity"
                   android:launchMode="singleTop">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                        android:value=".MainActivity"/>
@@ -27,8 +27,10 @@
 
         <activity android:name=".QuestionActivity"
             android:launchMode="singleTop">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+        </activity>
+
+        <activity android:name=".AnswerActivity"
+            android:launchMode="singleTop">
         </activity>
 
     </application>
