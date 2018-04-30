@@ -55,4 +55,15 @@ class QuestionActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val i = intent.getIntExtra("INDEX", 0)
+
+        if (i == 0) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
 }
