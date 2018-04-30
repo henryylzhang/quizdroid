@@ -15,7 +15,7 @@ class MainAdapter : RecyclerView.Adapter<ViewHolder>() {
     private val physicsQuestions = arrayOf("F = ")
     private val superQuestions = arrayOf("What was the first Marvel movie?")
     private val questions = arrayOf(mathQuestions, physicsQuestions, superQuestions)
-    private val mathAnswers = arrayOf("1", "2", "3", "4")
+    private val mathAnswers = arrayOf("1", "2", "3", "4") // only one set of answers because Serializable type is confusing
     private val physicsAnswers = arrayOf("ma", "mc^2", "42", "meow?")
     private val superAnswers = arrayOf("Iron Man", "Thor", "Incredible Hulk", "Avengers")
     private val answerOptions = arrayOf(mathAnswers, physicsAnswers, superAnswers)

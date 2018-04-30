@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_question.*
 
 class QuestionActivity : AppCompatActivity() {
@@ -16,11 +15,14 @@ class QuestionActivity : AppCompatActivity() {
         val questions = intent.getStringArrayExtra("QUESTIONS")
         val answerOptions = intent.getStringArrayExtra("ANSWER_OPTIONS")
         val correctAnswers = intent.getStringArrayExtra("CORRECT_ANSWERS")
+        var numberCorrect = intent.getIntExtra("NUMBER_CORRECT", 0)
+        var i = intent.getIntExtra("INDEX", 0)
 
-        var selectedChoice = ""
+        var selectedAnswer = ""
+
         supportActionBar?.title = navBarTitle
 
-        textView_question.text = questions[0]
+        textView_question.text = questions[i]
 
         radio_answer_1.text = answerOptions[0]
         radio_answer_2.text = answerOptions[1]
@@ -30,12 +32,25 @@ class QuestionActivity : AppCompatActivity() {
         radioGroup_answerGroup.setOnCheckedChangeListener {_, checkedID  ->
             button_submitAnswer.isEnabled = true
 
-            selectedChoice = findViewById<RadioButton>(checkedID).text.toString()
-            //println(selectedChoice)
+            selectedAnswer = findViewById<RadioButton>(checkedID).text.toString()
         }
 
         button_submitAnswer.setOnClickListener {
             val intent = Intent(this, AnswerActivity::class.java)
+
+            if (selectedAnswer == correctAnswers[i]) {
+                numberCorrect += 1
+            }
+
+            i += 1
+
+            intent.putExtra("TOPIC", navBarTitle)
+            intent.putExtra("QUESTIONS", questions)
+            intent.putExtra("ANSWER_OPTIONS", answerOptions)
+            intent.putExtra("CORRECT_ANSWERS", correctAnswers)
+            intent.putExtra("NUMBER_CORRECT", numberCorrect)
+            intent.putExtra("INDEX", i)
+            intent.putExtra("SELECTED_ANSWER", selectedAnswer)
 
             startActivity(intent)
         }

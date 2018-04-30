@@ -27,6 +27,8 @@ class OverviewActivity : AppCompatActivity() {
             intent.putExtra("QUESTIONS", questions)
             intent.putExtra("ANSWER_OPTIONS", answerOptions)
             intent.putExtra("CORRECT_ANSWERS", correctAnswers)
+            intent.putExtra("NUMBER_CORRECT", 0)
+            intent.putExtra("INDEX", 0)
 
             startActivity(intent)
         }
