@@ -24,7 +24,7 @@ class OverviewFragment : Fragment() {
         val correctAnswers = data.getStringArray("CORRECT_ANSWERS")
 
         textView_overview.text = overview
-        textView_numberQuestions.text = questions?.size.toString() + "Question(s)"
+        textView_numberQuestions.text = questions?.size.toString() + " Question(s)"
 
         button_beginQuiz.setOnClickListener {
             val data = Bundle()
