@@ -1,6 +1,7 @@
 package edu.washington.zhang007.quizdroid
 
 import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -57,7 +58,7 @@ class ViewHolder(val view: View, var topics: String? = null,
 
     init {
         view.setOnClickListener {
-            val intent = Intent(view.context, OverviewActivity::class.java)
+            val intent = Intent(view.context, ControllerActivity::class.java)
 
             intent.putExtra(TOPIC_NAME, topics)
             intent.putExtra(TOPIC_OVERVIEW, overviews)
