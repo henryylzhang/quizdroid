@@ -16,13 +16,12 @@ class OverviewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val data = arguments
+        val data = arguments as Bundle
 
-        val navBarTitle = data?.getString("NAME")
-        val overview = data?.getString("OVERVIEW")
-        val questions = data?.getStringArray("QUESTIONS")
-        val answerOptions = data?.getStringArray("ANSWER_OPTIONS")
-        val correctAnswers = data?.getStringArray("CORRECT_ANSWERS")
+        val overview = data.getString("OVERVIEW")
+        val questions = data.getStringArray("QUESTIONS")
+        val answerOptions = data.getStringArray("ANSWER_OPTIONS")
+        val correctAnswers = data.getStringArray("CORRECT_ANSWERS")
 
         textView_overview.text = overview
         textView_numberQuestions.text = questions?.size.toString() + "Question(s)"
