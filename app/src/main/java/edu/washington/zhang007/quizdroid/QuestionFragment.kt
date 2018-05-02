@@ -52,11 +52,12 @@ class QuestionFragment : Fragment() {
             data.putStringArray("CORRECT_ANSWERS", correctAnswers)
             data.putInt("NUMBER_CORRECT", numberCorrect)
             data.putInt("INDEX", i)
+            data.putString("SELECTED_ANSWER", selectedAnswer)
 
             val answerFragment = AnswerFragment()
             answerFragment.arguments = data
 
-            loadFragment((answerFragment))
+            loadFragment(answerFragment)
         }
     }
 
