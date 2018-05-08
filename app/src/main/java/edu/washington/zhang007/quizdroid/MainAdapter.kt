@@ -21,6 +21,7 @@ class MainAdapter(val quiz: QuizData) : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.view.imageView_topicIcon.setImageResource(quiz.topicData[position].topicIcon)
         holder.view.textView_topic.text = quiz.topicData.get(position).title
         holder.view.textView_shortDesc.text = quiz.topicData[position].shortDesc
 

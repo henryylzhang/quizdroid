@@ -1,6 +1,7 @@
 package edu.washington.zhang007.quizdroid
 
 import android.app.Application
+import android.graphics.drawable.Drawable
 import android.util.Log
 import java.io.Serializable
 
@@ -28,7 +29,8 @@ interface TopicRepository {
     fun removeTopic(t: Topic)
 }
 
-data class Topic(val title: String, val shortDesc: String, val longDesc: String, val questions:Array<Question>)
+data class Topic(val title: String, val shortDesc: String, val longDesc: String,
+                 val questions:Array<Question>, val topicIcon: Int) : Serializable
 
 data class Question(val questionText: String, val answerOptions: Array<String>,
                     val correctIndex: Int) : Serializable

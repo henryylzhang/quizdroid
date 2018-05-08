@@ -23,11 +23,11 @@ class QuizData : TopicRepository {
         val superQ1 = Question("What was the first Marvel movie?",
                                 arrayOf("Iron Man", "Thor", "Incredible Hulk", "Avengers"), 0)
         val mathTopic = Topic("Math", "Numbers",
-                    "These are numbers", arrayOf(mathQ1, mathQ2))
+                    "These are numbers", arrayOf(mathQ1, mathQ2), R.drawable.ic_launcher_background)
         val physTopic = Topic("Physics", "Applied Math",
-                    "Physics is math but worse", arrayOf(physQ1))
+                    "Physics is math but worse", arrayOf(physQ1), R.drawable.ic_launcher_background)
         val superTopic = Topic("Marvel Superheroes", "Marvel > DC",
-                    "I don't feel so good", arrayOf(superQ1))
+                    "I don't feel so good", arrayOf(superQ1), R.drawable.ic_launcher_background)
 
         this.addTopic(mathTopic)
         this.addTopic(physTopic)
