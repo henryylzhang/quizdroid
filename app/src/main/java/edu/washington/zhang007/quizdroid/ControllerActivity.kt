@@ -25,18 +25,12 @@ class ControllerActivity : FragmentActivity() {
     }
 
     fun loadDataFromIntent(): Bundle {
-        val navBarTitle = intent.getStringExtra(ViewHolder.TOPIC_NAME)
         val overview = intent.getStringExtra(ViewHolder.TOPIC_OVERVIEW)
-        val questions = intent.getStringArrayExtra(ViewHolder.TOPIC_QUESTIONS)
-        val answerOptions = intent.getStringArrayExtra(ViewHolder.ANSWER_OPTIONS)
-        val correctAnswers = intent.getStringArrayExtra(ViewHolder.CORRECT_ANSWERS)
+        val questions = intent.getSerializableExtra(ViewHolder.TOPIC_QUESTIONS)
 
         val data = Bundle()
-        data.putString("NAME", navBarTitle)
         data.putString("OVERVIEW", overview)
-        data.putStringArray("QUESTIONS", questions)
-        data.putStringArray("ANSWER_OPTIONS", answerOptions)
-        data.putStringArray("CORRECT_ANSWERS", correctAnswers)
+        data.putSerializable("QUESTIONS", questions)
 
         return data
     }

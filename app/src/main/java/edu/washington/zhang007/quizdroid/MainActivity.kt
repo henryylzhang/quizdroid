@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         val list = recyclerView_main
         list.layoutManager = LinearLayoutManager(this)
-        list.adapter = MainAdapter()
+        list.adapter = MainAdapter(QuizApp.quizData)
     }
 }

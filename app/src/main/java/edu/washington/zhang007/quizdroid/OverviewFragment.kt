@@ -19,18 +19,14 @@ class OverviewFragment : Fragment() {
         val data = arguments as Bundle
 
         val overview = data.getString("OVERVIEW")
-        val questions = data.getStringArray("QUESTIONS")
-        val answerOptions = data.getStringArray("ANSWER_OPTIONS")
-        val correctAnswers = data.getStringArray("CORRECT_ANSWERS")
+        val questions = data.getSerializable("QUESTIONS") as Array<Question>
 
         textView_overview.text = overview
-        textView_numberQuestions.text = questions?.size.toString() + " Question(s)"
+        textView_numberQuestions.text = questions.size.toString() + " Question(s)"
 
         button_beginQuiz.setOnClickListener {
             val data = Bundle()
-            data.putStringArray("QUESTIONS", questions)
-            data.putStringArray("ANSWER_OPTIONS", answerOptions)
-            data.putStringArray("CORRECT_ANSWERS", correctAnswers)
+            data.putSerializable("QUESTIONS", questions)
             data.putInt("NUMBER_CORRECT", 0)
             data.putInt("INDEX", 0)
 

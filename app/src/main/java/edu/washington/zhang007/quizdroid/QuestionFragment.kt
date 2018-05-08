@@ -18,15 +18,17 @@ class QuestionFragment : Fragment() {
 
         val data = arguments as Bundle
 
-        val questions = data.getStringArray("QUESTIONS")
-        val answerOptions = data.getStringArray("ANSWER_OPTIONS")
-        val correctAnswers = data.getStringArray("CORRECT_ANSWERS")
+        val questions = data.getSerializable("QUESTIONS") as Array<Question>
         var numberCorrect = data.getInt("NUMBER_CORRECT")
         var i = data.getInt("INDEX")
 
+        val questionText = questions.get(i).questionText
+        val answerOptions = questions.get(i).answerOptions
+        val correctIndex = questions.get(i).correctIndex
+
         var selectedAnswer = ""
 
-        textView_question.text = questions[i]
+        textView_question.text = questionText
 
         radio_answer_1.text = answerOptions[0]
         radio_answer_2.text = answerOptions[1]
@@ -40,16 +42,14 @@ class QuestionFragment : Fragment() {
         }
 
         button_submitAnswer.setOnClickListener {
-            if (selectedAnswer == correctAnswers[i]) {
+            if (answerOptions.indexOf(selectedAnswer) == correctIndex) {
                 numberCorrect += 1
             }
 
             i += 1
 
             val data = Bundle()
-            data.putStringArray("QUESTIONS", questions)
-            data.putStringArray("ANSWER_OPTIONS", answerOptions)
-            data.putStringArray("CORRECT_ANSWERS", correctAnswers)
+            data.putSerializable("QUESTIONS", questions)
             data.putInt("NUMBER_CORRECT", numberCorrect)
             data.putInt("INDEX", i)
             data.putString("SELECTED_ANSWER", selectedAnswer)

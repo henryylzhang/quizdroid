@@ -2,6 +2,7 @@ package edu.washington.zhang007.quizdroid
 
 import android.app.Application
 import android.util.Log
+import java.io.Serializable
 
 class QuizApp : Application() {
 
@@ -12,13 +13,22 @@ class QuizApp : Application() {
         Log.i(TAG, "QuizDroid up and running!")
     }
 
-    fun accessRepository(repo: TopicRepository) {
-        
+    companion object {
+        val quizData = QuizData()
+
+        init { // why does it have to be in init?
+            this.quizData.loadSampleData()
+        }
     }
 }
 
 interface TopicRepository {
-    data class Topic(val title: String, val shortDesc: String, val longDesc: String, val questions:Array<Question>)
-
-    data class Question(val questionText: String, val answers: Array<String>, val correctIndex: Int)
+    fun addTopic(t: Topic)
+    fun getRepository(): ArrayList<Topic>
+    fun removeTopic(t: Topic)
 }
+
+data class Topic(val title: String, val shortDesc: String, val longDesc: String, val questions:Array<Question>)
+
+data class Question(val questionText: String, val answerOptions: Array<String>,
+                    val correctIndex: Int) : Serializable
