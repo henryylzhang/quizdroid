@@ -18,15 +18,16 @@ class AnswerFragment : Fragment() {
 
         val data = arguments as Bundle
 
-        val questions = data.getStringArray("QUESTIONS")
-        val answerOptions = data.getStringArray("ANSWER_OPTIONS")
-        val correctAnswers = data.getStringArray("CORRECT_ANSWERS")
+        val questions = data.getSerializable("QUESTIONS") as Array<Question>
         val numberCorrect = data.getInt("NUMBER_CORRECT")
         val i = data.getInt("INDEX")
         val selectedAnswer = data.getString("SELECTED_ANSWER")
+        
+        val lastQuestionCorrectIndex = questions.get(i - 1).correctIndex
+        val correctAnswer = questions.get(i - 1).answerOptions[lastQuestionCorrectIndex]
 
         textView_playerAnswer.text = "Your answer was: " + selectedAnswer
-        textView_correctAnswer.text = "The correct answer is: " + correctAnswers[i - 1]
+        textView_correctAnswer.text = "The correct answer is: " + correctAnswer
         textView_numberCorrect.text = "$numberCorrect out of ${questions.size} correct"
 
         if (i >= questions.size) { // index will always be equal to or less
@@ -41,9 +42,7 @@ class AnswerFragment : Fragment() {
             button_nextOrFinish.text = "Next"
             button_nextOrFinish.setOnClickListener {
                 val data = Bundle()
-                data.putStringArray("QUESTIONS", questions)
-                data.putStringArray("ANSWER_OPTIONS", answerOptions)
-                data.putStringArray("CORRECT_ANSWERS", correctAnswers)
+                data.putSerializable("QUESTIONS", questions)
                 data.putInt("NUMBER_CORRECT", numberCorrect)
                 data.putInt("INDEX", i)
 
