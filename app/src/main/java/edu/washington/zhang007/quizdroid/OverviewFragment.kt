@@ -19,6 +19,8 @@ class OverviewFragment : Fragment() {
         val data = arguments as Bundle
 
         val overview = data.getString("OVERVIEW")
+
+        // There is a problem at lower API levels (somewhere below 24) that this cast will not work.
         val questions = data.getSerializable("QUESTIONS") as Array<Question>
 
         textView_overview.text = overview

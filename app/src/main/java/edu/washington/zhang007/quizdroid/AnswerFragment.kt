@@ -18,17 +18,20 @@ class AnswerFragment : Fragment() {
 
         val data = arguments as Bundle
 
+        // There is a problem at lower API levels (somewhere below 24) that this cast will not work.
         val questions = data.getSerializable("QUESTIONS") as Array<Question>
         val numberCorrect = data.getInt("NUMBER_CORRECT")
-        val i = data.getInt("INDEX")
+        var i = data.getInt("INDEX")
         val selectedAnswer = data.getString("SELECTED_ANSWER")
         
-        val lastQuestionCorrectIndex = questions.get(i - 1).correctIndex
-        val correctAnswer = questions.get(i - 1).answerOptions[lastQuestionCorrectIndex]
+        val lastQuestionCorrectIndex = questions[i].correctIndex
+        val correctAnswer = questions.get(i).answerOptions[lastQuestionCorrectIndex]
 
         textView_playerAnswer.text = "Your answer was: " + selectedAnswer
         textView_correctAnswer.text = "The correct answer is: " + correctAnswer
         textView_numberCorrect.text = "$numberCorrect out of ${questions.size} correct"
+
+        i += 1 // incremented here to avoid having to -1 to get previous correctAnswer/lastQCorrectIndex
 
         if (i >= questions.size) { // index will always be equal to or less
             button_nextOrFinish.text = "Finish"
@@ -41,6 +44,7 @@ class AnswerFragment : Fragment() {
         } else {
             button_nextOrFinish.text = "Next"
             button_nextOrFinish.setOnClickListener {
+
                 val data = Bundle()
                 data.putSerializable("QUESTIONS", questions)
                 data.putInt("NUMBER_CORRECT", numberCorrect)

@@ -18,9 +18,10 @@ class QuestionFragment : Fragment() {
 
         val data = arguments as Bundle
 
+        // There is a problem at lower API levels (somewhere below 24) that this cast will not work.
         val questions = data.getSerializable("QUESTIONS") as Array<Question>
         var numberCorrect = data.getInt("NUMBER_CORRECT")
-        var i = data.getInt("INDEX")
+        val i = data.getInt("INDEX")
 
         val questionText = questions.get(i).questionText
         val answerOptions = questions.get(i).answerOptions
@@ -45,8 +46,6 @@ class QuestionFragment : Fragment() {
             if (answerOptions.indexOf(selectedAnswer) == correctIndex) {
                 numberCorrect += 1
             }
-
-            i += 1
 
             val data = Bundle()
             data.putSerializable("QUESTIONS", questions)
