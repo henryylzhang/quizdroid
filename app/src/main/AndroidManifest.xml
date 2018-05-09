@@ -3,6 +3,7 @@
     package="edu.washington.zhang007.quizdroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".QuizApp"

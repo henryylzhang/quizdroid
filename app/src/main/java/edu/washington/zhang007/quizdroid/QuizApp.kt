@@ -18,7 +18,7 @@ class QuizApp : Application() {
         val quizData = QuizData()
 
         init { // why does it have to be in init?
-            this.quizData.loadSampleData()
+            this.quizData.loadJSONData()
         }
     }
 }
