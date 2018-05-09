@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_overview.*
+import java.util.*
+
 
 class OverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
@@ -21,7 +23,11 @@ class OverviewFragment : Fragment() {
         val overview = data.getString("OVERVIEW")
 
         // There is a problem at lower API levels (somewhere below 24) that this cast will not work.
-        val questions = data.getSerializable("QUESTIONS") as Array<Question>
+        // val questions = data.getSerializable("QUESTIONS") as Array<Question>
+
+        // These lines fix the CastExceptions throughout the app
+        val array = data.getSerializable("QUESTIONS") as Array<Any>
+        val questions = Arrays.copyOf(array, array.size, Array<Question>::class.java)
 
         textView_overview.text = overview
         textView_numberQuestions.text = questions.size.toString() + " Question(s)"

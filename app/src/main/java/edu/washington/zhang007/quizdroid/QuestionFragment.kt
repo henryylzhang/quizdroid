@@ -18,7 +18,6 @@ class QuestionFragment : Fragment() {
 
         val data = arguments as Bundle
 
-        // There is a problem at lower API levels (somewhere below 24) that this cast will not work.
         val questions = data.getSerializable("QUESTIONS") as Array<Question>
         var numberCorrect = data.getInt("NUMBER_CORRECT")
         val i = data.getInt("INDEX")
