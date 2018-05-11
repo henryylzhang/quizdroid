@@ -23,10 +23,10 @@ class QuizData : TopicRepository {
 
     fun loadJSONData() {
         val sdcard = Environment.getExternalStorageDirectory()
-        println(sdcard)
+        //println(sdcard)
 
         val file = File(sdcard, "questions.json")
-        if(file.exists()) println("questionsFile exists!")
+        //if(file.exists()) println("questionsFile exists!")
 
         val input = BufferedInputStream(file.inputStream()).use { it.reader().use { reader -> reader.readText() } }
 

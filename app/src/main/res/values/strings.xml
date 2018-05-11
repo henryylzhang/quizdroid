@@ -2,4 +2,10 @@
     <string name="app_name">QuizDroid</string>
     <string name="begin_quiz">Begin</string>
     <string name="submit_answer">Submit</string>
+    <string-array name="update_frequency">
+        <item>5 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>24 hours</item>
+    </string-array>
 </resources>
